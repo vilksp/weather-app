@@ -13,10 +13,10 @@ public class Url {
     private String api_key;
 
     public Url(String api_key) {
-        if (api_key.getClass().equals(String.class)) {
+        if (api_key.getClass() != null) {
             this.api_key = api_key;
         } else {
-            throw new IllegalStateException("Api is not string type!");
+            throw new IllegalStateException("You must enter value");
         }
     }
 
@@ -28,6 +28,6 @@ public class Url {
     public String getUrlForOlderDates(String dateFrom, String dateTo) {
 
         return this.UrlForOlderDate + "start_time=" + dateFrom + "&end_time=" + dateTo +
-                "&unit_system=si&fields=temp&" +"&apikey="+ this.api_key;
+                "&unit_system=si&fields=temp&" + "&apikey=" + this.api_key;
     }
 }
