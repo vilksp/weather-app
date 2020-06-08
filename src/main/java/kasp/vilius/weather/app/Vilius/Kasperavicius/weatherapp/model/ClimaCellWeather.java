@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @Entity
 @AllArgsConstructor
-public class ClimaCellWeatherNow {
+public class ClimaCellWeather {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
