@@ -10,7 +10,7 @@
 <body>
 <div class="container">
     <h1>Vilius Kasperavicius Weather app</h1>
-    <p>This application lists the current weather and precitipation</p>
+    <p>This application lists the current weather of Vilnius and  it's precitipation</p>
 
 
     <table class="table">
@@ -18,12 +18,17 @@
 
             <th>Latitude</th>
             <th>Longitude</th>
-            <th>Changes since last day</th>
+            <th>Precipitation value</th>
+            <th>Precipitation Type</th>
+            <th>Time </th>
         </tr>
         <tr th:each="todayWeather : ${todayWeathers}">
 
             <td th:text="${todayWeather.lat}"></td>
-            <td th:text="${todayWeather.lon}">
+            <td th:text="${todayWeather.lon}"></td>
+            <td th:text="${todayWeather.precipitation_val}"></td>
+            <td th:text="${todayWeather.precipitation_type}"></td>
+            <td th:text="${todayWeather.time}"></td>
 
         </tr>
     </table>
