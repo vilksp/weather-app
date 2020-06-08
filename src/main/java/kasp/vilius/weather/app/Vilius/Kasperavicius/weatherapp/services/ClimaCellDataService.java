@@ -30,7 +30,7 @@ public class ClimaCellDataService {
     @PostConstruct
     @Scheduled(cron = "* * 1 * * *")
     private void fetchCurrentClimaCellData() throws IOException, InterruptedException {
-        Url VilniusUrl = new Url("bpKzR82N2Sj5hFMp1qzhAAk1IgC1Hcsk");
+        Url VilniusUrl = new Url("");
         /*
          * Must Include Api key above
          *
@@ -62,13 +62,13 @@ public class ClimaCellDataService {
     @PostConstruct
     public void fetchOlderData() throws IOException, InterruptedException {
 
-        Url olderWeatherData = new Url("bpKzR82N2Sj5hFMp1qzhAAk1IgC1Hcsk");
+        Url olderWeatherData = new Url("");
 
         /*
          * Must Include Api key above
          *
          */
-        String url = olderWeatherData.getUrlForOlderDates("2020-06-08", "now");
+        String url = olderWeatherData.getUrlForOlderDates("2020-06-09", "now");
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
