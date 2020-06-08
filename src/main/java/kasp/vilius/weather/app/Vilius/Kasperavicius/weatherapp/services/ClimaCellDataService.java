@@ -17,6 +17,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
 
 @Service
 @AllArgsConstructor
@@ -68,7 +69,13 @@ public class ClimaCellDataService {
          * Must Include Api key above
          *
          */
-        String url = olderWeatherData.getUrlForOlderDates("2020-06-09", "now");
+
+        LocalDate date = LocalDate.now();
+       LocalDate minusDays = date.minusWeeks(4);
+        String fourWeeksPrior = minusDays.toString();
+
+
+        String url = olderWeatherData.getUrlForOlderDates(fourWeeksPrior, "now");
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -78,9 +85,8 @@ public class ClimaCellDataService {
 
         HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        JSONObject jsonObject = new JSONObject(httpResponse.body().trim().charAt(0));
-
         JSONArray array = new JSONArray(httpResponse.body().trim());
+
 
         for (int i = 0; i < array.length(); i++) {
             ClimaCellDataOld obj = new ClimaCellDataOld();
