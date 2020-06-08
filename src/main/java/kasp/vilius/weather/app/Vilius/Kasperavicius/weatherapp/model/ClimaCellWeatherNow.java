@@ -23,8 +23,8 @@ public class ClimaCellWeatherNow {
 
     private double lat; //latitude
     private double lon; //longitude
-    private double precipitation_val;
-    private String precipitation_type;
+    private double temp_val;
+    private String units;
     private String time; //might change to Date type
 
 
@@ -34,8 +34,8 @@ public class ClimaCellWeatherNow {
                 "id=" + id +
                 ", lat=" + lat +
                 ", lon=" + lon +
-                ", precipitation_val=" + precipitation_val +
-                ", precipitation_type='" + precipitation_type + '\'' +
+                ", precipitation_val=" + temp_val +
+                ", precipitation_type='" + units + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }

@@ -18,16 +18,16 @@
 
             <th>Latitude</th>
             <th>Longitude</th>
-            <th>Precipitation value</th>
-            <th>Precipitation Type</th>
+            <th>Temperature </th>
+            <th>Units</th>
             <th>Time </th>
         </tr>
         <tr th:each="todayWeather : ${todayWeathers}">
 
             <td th:text="${todayWeather.lat}"></td>
             <td th:text="${todayWeather.lon}"></td>
-            <td th:text="${todayWeather.precipitation_val}"></td>
-            <td th:text="${todayWeather.precipitation_type}"></td>
+            <td th:text="${todayWeather.temp_val}"></td>
+            <td th:text="${todayWeather.units}"></td>
             <td th:text="${todayWeather.time}"></td>
 
         </tr>

@@ -18,7 +18,7 @@ import java.net.http.HttpResponse;
 public class ClimaCellDataService {
 
     private static String CLIMACELL_URL =
-            "https://api.climacell.co/v3/weather/realtime?lat=54.687157&lon=25.279652&unit_system=si&apikey=bpKzR82N2Sj5hFMp1qzhAAk1IgC1Hcsk";
+            "https://api.climacell.co/v3/weather/realtime?lat=54.687157&lon=25.279652&unit_system=si&&fields%5B%5D=temp&apikey=bpKzR82N2Sj5hFMp1qzhAAk1IgC1Hcsk";
 
 
     @Autowired
@@ -41,11 +41,10 @@ public class ClimaCellDataService {
         todaysWeather.setLat(jsonObject.getDouble("lat"));
         todaysWeather.setLon(jsonObject.getDouble("lon"));
 
-        JSONObject prec_json = (JSONObject) jsonObject.get("precipitation");
-        todaysWeather.setPrecipitation_val(prec_json.getDouble("value"));
+        JSONObject prec_json = (JSONObject) jsonObject.get("temp");
+        todaysWeather.setTemp_val(prec_json.getDouble("value"));
 
-        JSONObject type_json = (JSONObject) jsonObject.get("precipitation_type");
-        todaysWeather.setPrecipitation_type(type_json.getString("value"));
+        todaysWeather.setUnits(prec_json.getString("units"));
 
         JSONObject time_json = (JSONObject) jsonObject.get("observation_time");
         todaysWeather.setTime(time_json.getString("value"));
