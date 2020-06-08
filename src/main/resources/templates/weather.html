@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <h1>Vilius Kasperavicius Weather app</h1>
+    <p>This application lists the current weather and precitipation</p>
+
+
+    <table class="table">
+        <tr>
+
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Changes since last day</th>
+        </tr>
+        <tr th:each="todayWeather : ${todayWeathers}">
+
+            <td th:text="${todayWeather.lat}"></td>
+            <td th:text="${todayWeather.lon}">
+
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
