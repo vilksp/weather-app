@@ -7,27 +7,31 @@ import lombok.Setter;
 @Setter
 public class Url {
 
-    private String UrlForOlderDate = "https://api.climacell.co/v3/weather/historical/station?&lat=54.687157&lon=25.279652&";
-    private String UrlForTodaysWeather =
-            "https://api.climacell.co/v3/weather/realtime?lat=54.687157&lon=25.279652&unit_system=si&fields=temp";
+    private String Url = "https://api.climacell.co/v3/weather/";
+
     private String api_key;
 
     public Url(String api_key) {
         if (api_key.getClass() != null) {
             this.api_key = api_key;
         } else {
-            throw new IllegalStateException("You must enter value");
+            throw new IllegalStateException("You must enter value that is not null");
         }
     }
 
     public String getUrlForTodaysWeather() {
-
-        return this.UrlForTodaysWeather += "&apikey=" + this.api_key;
+        String todaysWeatherUrl = this.Url + "realtime?lat=54.687157&lon=25.279652&unit_system=si&fields=temp" + "&apikey=" + this.api_key;
+        return todaysWeatherUrl;
     }
 
     public String getUrlForOlderDates(String dateFrom, String dateTo) {
+        String olderDatesUrl = this.Url + "historical/station?&lat=54.687157&lon=25.279652&" + "start_time="
+                + dateFrom +
+                "&end_time="
+                + dateTo +
+                "&unit_system=si&fields=temp&"
+                + "&apikey=" + this.api_key;
 
-        return this.UrlForOlderDate + "start_time=" + dateFrom + "&end_time=" + dateTo +
-                "&unit_system=si&fields=temp&" + "&apikey=" + this.api_key;
+        return olderDatesUrl;
     }
 }
